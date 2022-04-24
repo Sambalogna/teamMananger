@@ -1,0 +1,26 @@
+{
+  "name": "teammananger",
+  "version": "1.0.0",
+  "description": "generate a team on html",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sambalogna/teamMananger.git"
+  },
+  "author": "Samuel Mandel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sambalogna/teamMananger/issues"
+  },
+  "homepage": "https://github.com/Sambalogna/teamMananger#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "jest": "^27.5.1"
+  }
+}
