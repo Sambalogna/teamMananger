@@ -1,34 +1,105 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const Employee = require('./lib/employee')
+const Manager = require('./lib/manager')
+const Intern = require('./lib/intern')
+const Engineer = require('./lib/engineer')
 const team = [];
 
-//second prompt
-// function startPrompt() {
-//     inquirer
-//         .prompt([
-//             {
-//              //get role
-//              type: 'checkbox',
-//              message: 'Choose a role', 
-//              choices: ['Engineer', 'Intern', //'exit']
-//             }
-//         ])
-//         //for each response create a new object for each class.
-//         .then((response)=>{
-//             if(response === 'Manager'){
-//                console.log('You chose manager ')
-//                //start Manager prompt -> create Manager HTML card
-//             }
-//             if(response === 'Engineer'){
-//                 console.log('You chose Engineer')
-//                 //start Engineer prompt -> create Engineer HTML card
-//             }
-//             if(response === 'Intern'){
-//                 console.log('You chose Intern')
-//                 //start Intern prompt -> create Intern HTML card
-//             }
-//         })
-//     }   
+// second prompt
+function startPrompt() {
+    inquirer
+        .prompt([
+            {
+             //get role
+             type: 'list',
+             message: 'Choose a role', 
+             choices: ['Engineer', 'Intern', 'exit'],
+             name: 'addTeam'
+            }
+            
+        ])
+        //for each response create a new object for each class.
+        .then((response)=>{
+            console.log(response.addTeam)
+            if(response.addTeam === 'Engineer'){
+                console.log('You chose Engineer')
+                startEngineer();
+            }
+            if(response.addTeam === 'Intern'){
+                console.log('You chose Intern')
+                startIntern();
+            }
+            if(response.addTeam === 'exit'){
+                renderHTML();
+            }
+        })
+    }
+    
+ function startEngineer() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is your engineer\'s name?',
+                name: 'engineer'
+            },
+            {
+                type: 'input',
+                message: 'What is your id',
+                name: 'id'
+            },
+            {
+                type: 'input',
+                message: 'What is your email',
+                name: 'email'
+            },
+            {
+                type: 'input',
+                message: 'What is your github',
+                name: 'github'
+            }
+
+        ])
+        .then((response)=>{
+            const engineer = new Engineer(response.engineer, response.id,response.email,response.github)
+            team.push(engineer)
+        })
+ }
+
+ function startIntern() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is your intern\'s name?',
+                name: 'intern'
+            },
+            {
+                type: 'input',
+                message: 'What is your id',
+                name: 'id'
+            },
+            {
+                type: 'input',
+                message: 'What is your email',
+                name: 'email'
+            },
+            {
+                type:'input',
+                message: 'Where do you go to school?',
+                name: 'school'
+
+            }
+
+        ])
+        .then((response)=>{
+            const intern = new Intern(response.intern, response.id, response.email, response.school)
+            team.push(intern)
+        })
+ }
+
+
 
 //first prompt.. add manager
 begin = () =>{
@@ -56,11 +127,16 @@ inquirer
         }
     ])
     .then((response)=>{
-        const manager = new Manager(response.name, response.id, response.email, response.officeNumber)
+        const manager = new Manager(response.manager, response.id, response.email, response.officeNumber)
         team.push(manager);
-            //create a start counter to increment employee when creating new employee object?
-            startPrompt();
-            console.log(response)
+            startPrompt();   
     })
 }   
 begin();
+
+function renderHTML(){
+
+    console.log('ye exited')
+fs.writeFile('index.html',htmlSkeleton,(err) =>
+            err ? console.error(err) : console.log('index.html created!'))
+}
