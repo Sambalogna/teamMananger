@@ -4,7 +4,9 @@ const Employee = require('./lib/employee')
 const Manager = require('./lib/manager')
 const Intern = require('./lib/intern')
 const Engineer = require('./lib/engineer')
-const team = [];
+const teamM = [];
+const teamI = [];
+const teamE = [];
 
 // second prompt
 function startPrompt() {
@@ -63,7 +65,8 @@ function startPrompt() {
         ])
         .then((response)=>{
             const engineer = new Engineer(response.engineer, response.id,response.email,response.github)
-            team.push(engineer)
+            teamE.push(engineer)
+            startPrompt();
         })
  }
 
@@ -95,7 +98,8 @@ function startPrompt() {
         ])
         .then((response)=>{
             const intern = new Intern(response.intern, response.id, response.email, response.school)
-            team.push(intern)
+            teamI.push(intern)
+            startPrompt();
         })
  }
 
@@ -128,15 +132,16 @@ inquirer
     ])
     .then((response)=>{
         const manager = new Manager(response.manager, response.id, response.email, response.officeNumber)
-        team.push(manager);
+        teamM.push(manager);
             startPrompt();   
     })
 }   
 begin();
 
 function renderHTML(){
-
-    console.log('ye exited')
-fs.writeFile('index.html',htmlSkeleton,(err) =>
-            err ? console.error(err) : console.log('index.html created!'))
+    console.log(teamM[0].name) //name
+    console.log(teamI[0].name)
+    console.log(teamE[0].name)
+//fs.writeFile('index.html',htmlSkeleton,(err) =>
+           // err ? console.error(err) : console.log('index.html created!'))
 }
