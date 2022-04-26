@@ -144,7 +144,8 @@ function renderHTML(){
     // console.log(teamI[0].name)
     // console.log(teamE[0].name)
 
-    var cardSkeletonM =
+  
+    cardSkeletonM =
     `
     <div class= "col-sm">
     <div class="card" style="width: 18rem;">
@@ -154,15 +155,14 @@ function renderHTML(){
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${teamM[0].name}  </li>
         <li class="list-group-item">${teamM[0].id} </li>
-        <li class="list-group-item">${teamM[0].email}  </li>
+        <li class="list-group-item"><a href="mailto:${teamM[0].email}">${teamM[0].email}</a> </li>
         <li class="list-group-item">${teamM[0].officeNumber} </li>
       </ul>
     </div>
     </div>
-    
     `
     for(var i = 0; i<teamI.length; i++){
-        var cardSkeletonI = 
+        cardSkeletonI = 
         `
 <div class= "col-sm">
 <div class="card" style="width: 18rem;">
@@ -172,7 +172,7 @@ function renderHTML(){
 <ul class="list-group list-group-flush">
     <li class="list-group-item">${teamI[i].name}  </li>
     <li class="list-group-item">${teamI[i].id} </li>
-    <li class="list-group-item">${teamI[i].email}  </li>
+    <li class="list-group-item"><a href="mailto:${teamI[i].email}">${teamI[i].email}</a> </li>
     <li class="list-group-item">${teamI[i].school} </li>
     
 </ul>
@@ -181,7 +181,7 @@ function renderHTML(){
         `
     }
     for(var i = 0; i<teamE.length; i++){
-        var cardSkeletonE = 
+        cardSkeletonE = 
         `
 <div class= "col-sm">
 <div class="card" style="width: 18rem;">
@@ -191,13 +191,13 @@ function renderHTML(){
 <ul class="list-group list-group-flush">
     <li class="list-group-item">${teamE[i].name}  </li>
     <li class="list-group-item">${teamE[i].id} </li>
-    <li class="list-group-item">${teamE[i].email}  </li>
+    <li class="list-group-item"><a href="mailto:${teamE[i].email}">${teamE[i].email}</a>  </li>
     <li class="list-group-item"><a href="https://github.com/${teamE[i].github}">${teamE[i].github}</a></li>
 </ul>
 </div> 
 </div>     
         `
-    }
+}
     var HTMLSkeleton = 
     `
     <!DOCTYPE html>
@@ -213,7 +213,7 @@ function renderHTML(){
 </head>
 <body>
 <header>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
   <div class="container">
     <h1 class="display-4">Team Manager</h1>
     <p class="lead">See your team below!</p>
