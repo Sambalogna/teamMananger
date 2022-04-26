@@ -237,7 +237,7 @@ ${cardSkeletonI}
     `
 
     fs.writeFile('index.html', HTMLSkeleton ,(err) =>
-    err ? console.error(err) : console.log('card added!'))
+    err ? console.error(err) : console.log('html generated!'))
     
     
 }

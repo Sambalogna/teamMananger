@@ -29,7 +29,7 @@ Install this package by doing an npm install from the main branch. Then run node
 ## Usage:
 
 Use this program to generate an html roster for your team 
-[Usage Video]()
+[Usage Video](https://watch.screencastify.com/v/CIkjFd5OKw6bc2FRgT7Q)
  
 ## License: [!['License: MIT'](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
